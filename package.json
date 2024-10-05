@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@types/jspdf": "^2.0.0",
+    "jspdf": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/jszip": "^3.4.1",
+    "vite": "^5.4.8"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  }
+}

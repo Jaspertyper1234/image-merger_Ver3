@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片合成工具</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        button, select, input {
+            font-size: 16px;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #preview {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #preview img {
+            max-width: 200px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin: 5px;
+            cursor: pointer;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        #message {
+            margin-top: 20px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>图片合成工具</h1>
+        
+        <div class="input-group">
+            <label for="imageUpload">选择图片：</label>
+            <input type="file" id="imageUpload" multiple accept="image/*">
+            <button id="uploadButton">上传图片</button>
+        </div>
+        
+        <div class="input-group">
+            <label for="compositeType">合成类型：</label>
+            <select id="compositeType">
+                <option value="2">2合1</option>
+                <option value="3">3合1</option>
+                <option value="4">4合1</option>
+                <option value="6">6合1</option>
+                <option value="9">9合1</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="imageGap">图片间隔：</label>
+            <input type="number" id="imageGap" min="0" value="10">
+        </div>
+
+        <div class="input-group">
+            <label for="compositeInterval">合成间隔：</label>
+            <input type="number" id="compositeInterval" min="1" value="1">
+        </div>
+        
+        <button id="compositeButton">合成图片</button>
+        
+        <div id="preview"></div>
+        
+        <div class="action-buttons">
+            <button id="downloadButton">下载图片</button>
+            <button id="exportExcelButton">导出Excel</button>
+            <button id="exportPDFButton">导出PDF</button>
+            <button id="clearButton">清除合成图片</button>
+        </div>
+        
+        <div id="downloadProgress" style="display: none;">
+            <progress id="progressBar" value="0" max="100"></progress>
+            <span id="progressText">0%</span>
+        </div>
+
+        <div id="message" style="text-align: center; margin-top: 20px; color: #2c3e50; font-weight: bold;"></div>
+    </div>
+
+    <!-- 引入必要的库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+    <!-- 修改这里 -->
+    <script type="module" src="/main.ts"></script>
+</body>
+</html>
